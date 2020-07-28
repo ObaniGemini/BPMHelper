@@ -96,7 +96,7 @@ func HZ_text_changed( text ):
 	
 	var value = text.to_float() * speed
 	
-	BPM.text = str( value * 60 ).substr( 0, 7 )
+	BPM.text = str( 60 * text.to_float() / speed ).substr( 0, 7 )
 	if( value == 0 ):
 		Time.text = ""
 	else:
