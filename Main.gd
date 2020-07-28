@@ -85,7 +85,7 @@ func MS_text_changed( text ):
 		Hz.text = ""
 	else:
 		BPM.text = str( ( 60 * timeUnit ) / value ).substr( 0, 7 )
-		Hz.text = str( 1 / value ).substr( 0, 7 )
+		Hz.text = str( timeUnit / value ).substr( 0, 7 )
 
 
 func HZ_text_changed( text ):
