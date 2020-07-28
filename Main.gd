@@ -78,13 +78,13 @@ func MS_text_changed( text ):
 	if( !check_validity( text ) ):
 		return
 	
-	var value = text.to_float() * speed
+	var value = text.to_float()
 	
 	if( value == 0 ):
 		BPM.text = ""
 		Hz.text = ""
 	else:
-		BPM.text = str( ( 60 * timeUnit ) / value ).substr( 0, 7 )
+		BPM.text = str( ( 60 * timeUnit ) / ( value * speed ) ).substr( 0, 7 )
 		Hz.text = str( timeUnit / value ).substr( 0, 7 )
 
 
@@ -94,9 +94,9 @@ func HZ_text_changed( text ):
 	if( !check_validity( text ) ):
 		return
 	
-	var value = text.to_float() * speed
+	var value = text.to_float()
 	
-	BPM.text = str( 60 * text.to_float() / speed ).substr( 0, 7 )
+	BPM.text = str( 60 * value / speed ).substr( 0, 7 )
 	if( value == 0 ):
 		Time.text = ""
 	else:
