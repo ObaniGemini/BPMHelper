@@ -65,7 +65,7 @@ margin_left = 39.0
 margin_right = 85.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 46, 40 )
-text = "Ms"
+text = "S"
 
 [node name="Sub" type="Label" parent="Container/Time"]
 modulate = Color( 1, 1, 1, 0.784314 )
@@ -73,7 +73,7 @@ margin_top = 74.0
 margin_right = 125.0
 margin_bottom = 91.0
 custom_fonts/font = ExtResource( 2 )
-text = "Milliseconds"
+text = "Seconds"
 align = 1
 
 [node name="LineEdit" type="LineEdit" parent="Container/Time"]

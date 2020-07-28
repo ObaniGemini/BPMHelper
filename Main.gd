@@ -7,6 +7,7 @@ onready var BPM = $Container/BPM/LineEdit
 onready var Time = $Container/Time/LineEdit
 onready var Hz = $Container/Hz/LineEdit
 onready var Speed = $Speed/current
+onready var TimeUnitButton = $Container/Time/HBoxContainer/Button
 
 var speed = 1
 var timeUnit = 1
@@ -28,7 +29,8 @@ func _ready():
 	SM.load_config()
 	
 	set_speed( SM.config.speedIndex )
-	timeUnit = SM.config.timeUnit
+	if( timeUnit != SM.config.timeUnit ):
+		switchTimeUnit()
 	BPM.text = SM.config.BPM
 	Time.text = SM.config.Time
 	Hz.text = SM.config.Hz
@@ -113,11 +115,11 @@ func set_speed( value ):
 
 func switchTimeUnit():
 	if( timeUnit == 1 ):
-		$Container/Time/HBoxContainer/Button.text = "Ms"
+		TimeUnitButton.text = "Ms"
 		$Container/Time/Sub.text = "Milliseconds"
 		timeUnit = 1000
 	else:
-		$Container/Time/HBoxContainer/Button.text = "S"
+		TimeUnitButton.text = "S"
 		$Container/Time/Sub.text = "Seconds"
 		timeUnit = 1
 	
