@@ -1,6 +1,7 @@
 extends Node2D
 
-const speedTexts = [ "w", "h", "q", "e", "s" ]
+const speedTexts = [ "w", "h", "q", "e", "t", "s" ]
+const speedIndexes = [ 0.25, 0.5, 1, 2, 3, 4 ]
 
 onready var BPM = $Container/BPM/LineEdit
 onready var Time = $Container/Time/LineEdit
@@ -13,7 +14,7 @@ var timeUnit = 1
 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
-		SM.config.speed = $Speed/HSlider.value
+		SM.config.speedIndex = $Speed/HSlider.value
 		SM.config.timeUnit = timeUnit
 		SM.config.BPM = BPM.text
 		SM.config.Time = Time.text
@@ -26,7 +27,7 @@ func _notification(what):
 func _ready():
 	SM.load_config()
 	
-	set_speed( SM.config.speed )
+	set_speed( SM.config.speedIndex )
 	timeUnit = SM.config.timeUnit
 	BPM.text = SM.config.BPM
 	Time.text = SM.config.Time
@@ -103,9 +104,10 @@ func HZ_text_changed( text ):
 
 
 func set_speed( value ):
-	$Speed/HSlider.value = int( value )
-	speed = 0.25 * pow( 2, value )
-	Speed.text = speedTexts[ int( value ) ]
+	var idx = int( value )
+	$Speed/HSlider.value = idx
+	speed = speedIndexes[ idx ]
+	Speed.text = speedTexts[ idx ]
 	update()
 
 

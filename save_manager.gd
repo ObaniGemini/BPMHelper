@@ -2,7 +2,7 @@ extends Node
 
 
 const default_config = {
-	speed = 1,
+	speedIndex = 2, #the index of the value, not the value of speed
 	timeUnit = 1000,
 	BPM = "",
 	Time = "",
